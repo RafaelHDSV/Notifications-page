@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: URL SOLUTION HERE
+- Solution URL: https://www.frontendmentor.io/solutions/notifications-page-9R3clmqqQp
 - Live Site URL: https://notifications-page-rafael.netlify.app
 
 ### Screenshot
