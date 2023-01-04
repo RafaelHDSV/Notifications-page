@@ -50,9 +50,10 @@
 
     main {
       background-color: var(--white);
-      max-width: 45em;
+      max-width: 45rem;
       width: 100%;
-      padding: 3rem 2rem;
+      height: 90vh;
+      padding: 2rem;
       border-radius: 1rem;
       position: relative;
     }
@@ -88,11 +89,37 @@
       color: var(--dark_grayish_blue);
     }
 
+    header p,
+    .notifications_element .text p strong,
+    p em,
+    p:nth-child(3),
+    .notifications_element img:last-child,
+    .unread {
+      cursor: pointer;
+      transition: .3s all ease-out;
+    }
+
+    header p:hover,
+    .notifications_element .text p strong:nth-child(1):hover,
+    .notifications_element p strong:hover {
+      color: var(--blue);
+    }
+
+    p:nth-child(3):hover {
+      background-color: var(--light_grayish_blue_1);
+    }
+
+    .notifications_element img:last-child:hover {
+      padding: .1rem;
+      border: 1px solid var(--very_light_grayish_blue);
+      border-radius: .5rem;
+    }
+
     .notifications_element {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       gap: 1rem;
       margin: 0 0 2rem 0;
     }
@@ -114,7 +141,7 @@
     }
 
     .notifications_element .text p strong:nth-child(1) {
-      color: initial;
+      color: var(--very_dark_blue);
     }
 
     .notifications_element .text p em {
@@ -127,6 +154,14 @@
       color: var(--grayish_blue);
     }
 
+    .notifications_element .text p:nth-child(3) {
+      border: 1px solid var(--light_grayish_blue_2);
+      padding: 1rem;
+      border-radius: .5rem;
+      max-width: 36rem;
+      width: 100%;
+    }
+
     .notifications_element img:last-child {
       position: absolute;
       right: 3rem;
@@ -134,14 +169,45 @@
       width: 100%;
     }
 
-    /* .attribution {
-      font-size: 11px;
+    .unread {
+      background-color: var(--very_light_grayish_blue);
+      padding: .2rem 0;
+      border-radius: .5rem;
+    }
+
+    .unread p:nth-child(1)::after {
+      content: "";
+      position: absolute;
+      margin: .5rem 0 0 .5rem;
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background-color: var(--red);
+    }
+
+    .attribution {
+      padding: 2rem 0 0 0;
+    }
+
+    .attribution p {
+      color: var(--very_dark_blue);
+      font-size: 10px;
       text-align: center;
     }
 
     .attribution a {
-      color: hsl(228, 45%, 44%);
-    } */
+      text-decoration: none;
+      font-size: 10px;
+      text-align: center;
+      color: var(--blue);
+      cursor: pointer;
+      transition: .5s all ease-in-out;
+    }
+
+    .attribution a:hover {
+      font-size: 18px;
+      color: var(--red);
+    }
   </style>
 </head>
 
@@ -150,13 +216,13 @@
     <header>
       <div class="notifications">
         <h2>Notifications</h2>
-        <span>3</span>
+        <span id="span_notifications">3</span>
       </div>
 
-      <p>Mark all as read</p>
+      <p id="mark_all">Mark all as read</p>
     </header>
 
-    <div class="notifications_element">
+    <div class="notifications_element unread">
       <img class="avatar" src="images/avatar-mark-webber.webp" alt="avatar-mark-webber.webp">
 
       <div class="text">
@@ -165,7 +231,7 @@
       </div>
     </div>
 
-    <div class="notifications_element">
+    <div class="notifications_element unread">
       <img class="avatar" src="images/avatar-angela-gray.webp" alt="avatar-angela-gray.webp">
 
       <div class="text">
@@ -174,12 +240,23 @@
       </div>
     </div>
 
-    <div class="notifications_element">
+    <div class="notifications_element unread">
       <img class="avatar" src="images/avatar-jacob-thompson.webp" alt="avatar-jacob-thompson.webp">
 
       <div class="text">
         <p><strong>Jacob Thompson</strong> has joined your group <em>Chess Club</em></p>
         <p>1 day ago</p>
+      </div>
+    </div>
+
+    <div class="notifications_element">
+      <img class="avatar" src="images/avatar-rizky-hasanuddin.webp" alt="avatar-rizky-hasanuddin.webp">
+
+      <div class="text">
+        <p><strong>Rizky Hasanuddin</strong> sent you a private message</p>
+        <p>5 days ago</p>
+        <p>Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having
+          lots of fun and improving my game.</p>
       </div>
     </div>
 
@@ -214,18 +291,34 @@
     </div>
   </main>
 
-  <!-- Rizky Hasanuddin sent you a private message -->
-  <!-- 5 days ago -->
-  <!-- Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and -->
-  <!-- I'm already having lots of fun and improving my game. -->
-
-  <!-- Kimberly Smith commented on your picture -->
-  <!-- 1 week ago -->
-
-  <!-- <footer class=" attribution">
+  <footer class=" attribution">
     <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.</p>
     <p>Coded by <a href="https://github.com/RafaelHDSV" target="_blank">Rafael Henrique de Sousa Vieira</a>.</p>
-  </footer> -->
+  </footer>
+
+  <script>
+    let unread = document.querySelectorAll('.unread')
+    let spanNotifications = document.getElementById('span_notifications')
+    let markAll = document.getElementById('mark_all')
+    let notificationsUnread = 3
+
+    for (let i = 0; i < unread.length; i++) {
+      unread[i].addEventListener('click', () => {
+        unread[i].classList.remove('unread')
+        notificationsUnread -= 1
+        spanNotifications.innerHTML = notificationsUnread
+      })
+    }
+
+    markAll.addEventListener('click', () => {
+      notificationsUnread = 0
+      spanNotifications.innerHTML = notificationsUnread
+
+      for (let i = 0; i < unread.length; i++) {
+        unread[i].classList.remove('unread')
+      }
+    })
+  </script>
 </body>
 
 </html>
