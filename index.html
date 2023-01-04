@@ -54,6 +54,7 @@
       width: 100%;
       padding: 3rem 2rem;
       border-radius: 1rem;
+      position: relative;
     }
 
     header {
@@ -126,6 +127,13 @@
       color: var(--grayish_blue);
     }
 
+    .notifications_element img:last-child {
+      position: absolute;
+      right: 3rem;
+      max-width: 3rem;
+      width: 100%;
+    }
+
     /* .attribution {
       font-size: 11px;
       text-align: center;
@@ -173,6 +181,17 @@
         <p><strong>Jacob Thompson</strong> has joined your group <em>Chess Club</em></p>
         <p>1 day ago</p>
       </div>
+    </div>
+
+    <div class="notifications_element">
+      <img class="avatar" src="images/avatar-kimberly-smith.webp" alt="avatar-kimberly-smith.webp">
+
+      <div class="text">
+        <p><strong>Kimberly Smith</strong> commented on your picture</p>
+        <p>1 week ago</p>
+      </div>
+
+      <img src="images/image-chess.webp" alt="image-chess.webp">
     </div>
 
     <div class="notifications_element">
