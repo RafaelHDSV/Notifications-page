@@ -38,6 +38,54 @@
       font-size: 16px;
     }
 
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 100%;
+      min-height: 100vh;
+      background-color: var(--very_light_grayish_blue);
+    }
+
+    main {
+      background-color: var(--white);
+      max-width: 50em;
+      width: 100%;
+      padding: 3rem 2rem;
+      border-radius: 1rem;
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .notifications {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .notifications h2 {
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .notifications span {
+      background-color: var(--blue);
+      color: var(--white);
+      padding: .2rem .8rem .3rem .8rem;
+      border-radius: .5rem;
+    }
+
+    header p {
+      color: var(--dark_grayish_blue);
+    }
+
     /* .attribution {
       font-size: 11px;
       text-align: center;
@@ -50,10 +98,20 @@
 </head>
 
 <body>
+  <main>
+    <header>
+      <div class="notifications">
+        <h2>Notifications</h2>
+        <span>3</span>
+      </div>
+
+      <p>Mark all as read</p>
+    </header>
+  </main>
 
   <!-- Notifications 3 -->
 
-  <!-- Mark all as read -->
+  <!--  -->
 
   <!-- Mark Webber reacted to your recent post My first tournament today! -->
   <!-- 1m ago -->
