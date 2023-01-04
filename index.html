@@ -50,7 +50,7 @@
 
     main {
       background-color: var(--white);
-      max-width: 50em;
+      max-width: 45em;
       width: 100%;
       padding: 3rem 2rem;
       border-radius: 1rem;
@@ -105,6 +105,7 @@
       display: flex;
       flex-direction: column;
       gap: .5rem;
+      line-height: 1.5rem;
     }
 
     .notifications_element .text p:nth-child(1) {
@@ -113,6 +114,12 @@
 
     .notifications_element .text p strong:nth-child(1) {
       color: initial;
+    }
+
+    .notifications_element .text p em {
+      font-weight: 800;
+      font-style: normal;
+      color: var(--blue);
     }
 
     .notifications_element .text p:nth-child(2) {
@@ -167,10 +174,26 @@
         <p>1 day ago</p>
       </div>
     </div>
-  </main>
 
-  <!-- Jacob Thompson has joined your group Chess Club -->
-  <!-- 1 day ago -->
+    <div class="notifications_element">
+      <img class="avatar" src="images/avatar-nathan-peterson.webp" alt="avatar-nathan-peterson.webp">
+
+      <div class="text">
+        <p><strong>Nathan Peterson</strong> reacted to your recent post <strong>5 end-game strategies to increase your
+            win rate</strong></p>
+        <p>2 weeks ago</p>
+      </div>
+    </div>
+
+    <div class="notifications_element">
+      <img class="avatar" src="images/avatar-anna-kim.webp" alt="avatar-anna-kim.webp">
+
+      <div class="text">
+        <p><strong>Anna Kim</strong> left the group <em>Chess Club</em></p>
+        <p>2 weeks ago</p>
+      </div>
+    </div>
+  </main>
 
   <!-- Rizky Hasanuddin sent you a private message -->
   <!-- 5 days ago -->
@@ -179,12 +202,6 @@
 
   <!-- Kimberly Smith commented on your picture -->
   <!-- 1 week ago -->
-
-  <!-- Nathan Peterson reacted to your recent post 5 end-game strategies to increase your win rate -->
-  <!-- 2 weeks ago -->
-
-  <!-- Anna Kim left the group Chess Club -->
-  <!-- 2 weeks ago -->
 
   <!-- <footer class=" attribution">
     <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.</p>
